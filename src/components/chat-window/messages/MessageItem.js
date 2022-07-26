@@ -1,5 +1,4 @@
 import React, { memo } from 'react';
-import TimeAgo from 'timeago-react';
 import { Button } from 'rsuite';
 import ProfileAvatar from '../../ProfileAvatar';
 import ProfileInfoBtnModal from './ProfileInfoBtnModal';

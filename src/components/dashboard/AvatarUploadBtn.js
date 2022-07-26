@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
 import { Modal, Button, Alert } from 'rsuite';
-import AvatarEditor from 'react-avatar-editor';
 import {
   getDownloadURL,
   ref as storageRef,

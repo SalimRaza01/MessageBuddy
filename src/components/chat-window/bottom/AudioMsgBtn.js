@@ -1,6 +1,5 @@
 import React, { useState, useCallback } from 'react';
 import { InputGroup, Icon, Alert } from 'rsuite';
-import { ReactMic } from 'react-mic';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/firebase-storage';
 import { storage } from '../../../misc/firebase';
 
