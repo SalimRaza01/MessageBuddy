@@ -12,8 +12,8 @@ import {
   limitToLast,
   equalTo,
   update,
-} from 'firebase/database';
-import { deleteObject, ref as storageRef } from 'firebase/storage';
+} from 'firebase/firebase-database';
+import { deleteObject, ref as storageRef } from 'firebase/firebase-storage';
 import { database, auth, storage } from '../../../misc/firebase';
 import { transformToArrWithId, groupBy } from '../../../misc/helpers';
 import MessageItem from './MessageItem';

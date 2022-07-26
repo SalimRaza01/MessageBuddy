@@ -1,10 +1,17 @@
 import { Notification as Toast } from 'rsuite';
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
-import { getDatabase } from 'firebase/database';
-import { getStorage } from 'firebase/storage';
-import { getMessaging, isSupported, onMessage } from 'firebase/messaging';
-import { getFunctions, connectFunctionsEmulator } from 'firebase/functions';
+import { initializeApp } from 'firebase/firebase-app';
+import { getAuth } from 'firebase/firebase-auth';
+import { getDatabase } from 'firebase/firebase-database';
+import { getStorage } from 'firebase/firebase-storage';
+import {
+  getMessaging,
+  isSupported,
+  onMessage,
+} from 'firebase/firebase-messaging';
+import {
+  getFunctions,
+  connectFunctionsEmulator,
+} from 'firebase/firebase-functions';
 import { isLocalhost } from './helpers';
 
 const config = {

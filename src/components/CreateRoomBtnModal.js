@@ -1,5 +1,4 @@
 import React, { useState, useCallback, useRef } from 'react';
-import { useParams } from 'react-router';
 import {
   Button,
   Icon,
@@ -11,24 +10,23 @@ import {
   Schema,
   Alert,
 } from 'rsuite';
-import { httpsCallable } from 'firebase/functions';
-import { useModalState } from '../../../misc/custom-hooks';
-import { functions } from '../../../misc/firebase';
+import { serverTimestamp, ref, push } from 'firebase/firebase-database';
+import { useModalState } from '../misc/custom-hooks';
+import { database, auth } from '../misc/firebase';
 
 const { StringType } = Schema.Types;
 
 const model = Schema.Model({
-  title: StringType().isRequired('Title is required'),
-  message: StringType().isRequired('Message body is required'),
+  name: StringType().isRequired('Chat name is required'),
+  description: StringType().isRequired('Description is required'),
 });
 
 const INITIAL_FORM = {
-  title: '',
-  message: '',
+  name: '',
+  description: '',
 };
 
-const SendFcmBtnModal = () => {
-  const { chatId } = useParams();
+const CreateRoomBtnModal = () => {
   const { isOpen, open, close } = useModalState();
 
   const [formValue, setFormValue] = useState(INITIAL_FORM);
@@ -46,29 +44,40 @@ const SendFcmBtnModal = () => {
 
     setIsLoading(true);
 
+    const newRoomdata = {
+      ...formValue,
+      createdAt: serverTimestamp(),
+      admins: {
+        [auth.currentUser.uid]: true,
+      },
+      fcmUsers: {
+        [auth.currentUser.uid]: true,
+      },
+    };
+
     try {
-      const sendFcm = httpsCallable(functions, 'sendFcm');
-      await sendFcm({ chatId, ...formValue });
+      await push(ref(database, 'rooms'), newRoomdata);
+
+      Alert.info(`${formValue.name} has been created`, 4000);
 
       setIsLoading(false);
       setFormValue(INITIAL_FORM);
       close();
-
-      Alert.info('Notification has been sent', 7000);
-    } catch (error) {
-      Alert.error(error.message, 7000);
+    } catch (err) {
+      setIsLoading(false);
+      Alert.error(err.message, 4000);
     }
   };
 
   return (
-    <>
-      <Button appearance="primary" size="xs" onClick={open}>
-        <Icon icon="podcast" /> Broadcast message
+    <div className="mt-1">
+      <Button block color="green" onClick={open}>
+        <Icon icon="creative" /> Create new chat room
       </Button>
 
       <Modal show={isOpen} onHide={close}>
         <Modal.Header>
-          <Modal.Title>Send notification to room users</Modal.Title>
+          <Modal.Title>New chat room</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form
@@ -79,17 +88,17 @@ const SendFcmBtnModal = () => {
             ref={formRef}
           >
             <FormGroup>
-              <ControlLabel>Title</ControlLabel>
-              <FormControl name="title" placeholder="Enter message title..." />
+              <ControlLabel>Room name</ControlLabel>
+              <FormControl name="name" placeholder="Enter chat room name..." />
             </FormGroup>
 
             <FormGroup>
-              <ControlLabel>Message</ControlLabel>
+              <ControlLabel>Description</ControlLabel>
               <FormControl
                 componentClass="textarea"
                 rows={5}
-                name="message"
-                placeholder="Enter notification message..."
+                name="description"
+                placeholder="Enter room description..."
               />
             </FormGroup>
           </Form>
@@ -101,12 +110,12 @@ const SendFcmBtnModal = () => {
             onClick={onSubmit}
             disabled={isLoading}
           >
-            Publish message
+            Create new chat room
           </Button>
         </Modal.Footer>
       </Modal>
-    </>
+    </div>
   );
 };
 
-export default SendFcmBtnModal;
+export default CreateRoomBtnModal;

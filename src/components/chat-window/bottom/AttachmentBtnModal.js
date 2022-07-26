@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router';
 import { InputGroup, Icon, Modal, Button, Uploader, Alert } from 'rsuite';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/firebase-storage';
 import { useModalState } from '../../../misc/custom-hooks';
 import { storage } from '../../../misc/firebase';
 

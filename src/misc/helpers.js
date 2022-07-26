@@ -1,4 +1,10 @@
-import { ref, get, query, orderByChild, equalTo } from 'firebase/database';
+import {
+  ref,
+  get,
+  query,
+  orderByChild,
+  equalTo,
+} from 'firebase/firebase-database';
 
 export function getNameInitials(name) {
   const splitName = name.toUpperCase().split(' ');

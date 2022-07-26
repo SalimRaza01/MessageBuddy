@@ -1,4 +1,4 @@
-import { off, onValue, ref } from 'firebase/database';
+import { off, onValue, ref } from 'firebase/firebase-database';
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { database } from '../misc/firebase';
 import { transformToArrWithId } from '../misc/helpers';

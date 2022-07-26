@@ -6,9 +6,9 @@ import {
   onDisconnect,
   set,
   off,
-} from 'firebase/database';
-import { getToken } from 'firebase/messaging';
-import { onAuthStateChanged } from 'firebase/auth';
+} from 'firebase/firebase-database';
+import { getToken } from 'firebase/firebase-messaging';
+import { onAuthStateChanged } from 'firebase/firebase-auth';
 import { auth, database, fcmVapidKey, messaging } from '../misc/firebase';
 
 export const isOfflineForDatabase = {

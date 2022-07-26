@@ -1,4 +1,4 @@
-import { ref, update } from 'firebase/database';
+import { ref, update } from 'firebase/firebase-database';
 import React from 'react';
 import { Drawer, Button, Divider, Alert } from 'rsuite';
 import { useProfile } from '../../context/profile.context';

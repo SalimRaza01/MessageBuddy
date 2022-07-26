@@ -4,9 +4,9 @@ import {
   FacebookAuthProvider,
   signInWithPopup,
   getAdditionalUserInfo,
-} from 'firebase/auth';
+} from 'firebase/firebase-auth';
 import { Container, Grid, Row, Panel, Col, Button, Icon, Alert } from 'rsuite';
-import { ref, serverTimestamp, set } from 'firebase/database';
+import { ref, serverTimestamp, set } from 'firebase/firebase-database';
 import { auth, database } from '../misc/firebase';
 
 const SignIn = () => {

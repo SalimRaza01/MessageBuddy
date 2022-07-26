@@ -5,8 +5,8 @@ import {
   getDownloadURL,
   ref as storageRef,
   uploadBytes,
-} from 'firebase/storage';
-import { ref as dbRef, update } from 'firebase/database';
+} from 'firebase/firebase-storage';
+import { ref as dbRef, update } from 'firebase/firebase-database';
 import { useModalState } from '../../misc/custom-hooks';
 import { storage, database } from '../../misc/firebase';
 import { useProfile } from '../../context/profile.context';

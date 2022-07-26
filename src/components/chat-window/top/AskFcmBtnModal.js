@@ -1,6 +1,6 @@
 import React from 'react';
 import { IconButton, Icon, Modal, Button } from 'rsuite';
-import { ref, remove, set } from 'firebase/database';
+import { ref, remove, set } from 'firebase/firebase-database';
 import { useParams } from 'react-router';
 import { useCurrentRoom } from '../../../context/current-room.context';
 import { useModalState } from '../../../misc/custom-hooks';

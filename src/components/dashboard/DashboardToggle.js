@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { Button, Icon, Drawer, Alert } from 'rsuite';
-import { ref, set } from 'firebase/database';
+import { ref, set } from 'firebase/firebase-database';
 import { useModalState, useMediaQuery } from '../../misc/custom-hooks';
 import Dashboard from '.';
 import { auth, database } from '../../misc/firebase';

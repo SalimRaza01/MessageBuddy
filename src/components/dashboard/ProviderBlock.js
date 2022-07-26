@@ -5,7 +5,7 @@ import {
   GoogleAuthProvider,
   linkWithPopup,
   unlink,
-} from 'firebase/auth';
+} from 'firebase/firebase-auth';
 import { auth } from '../../misc/firebase';
 
 const ProviderBlock = () => {

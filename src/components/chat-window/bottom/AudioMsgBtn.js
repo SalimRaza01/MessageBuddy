@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { InputGroup, Icon, Alert } from 'rsuite';
 import { ReactMic } from 'react-mic';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/firebase-storage';
 import { storage } from '../../../misc/firebase';
 
 const AudioMsgBtn = ({ afterUpload }) => {

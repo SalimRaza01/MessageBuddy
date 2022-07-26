@@ -4,7 +4,7 @@ const serviceAccount = require('./service-account.json');
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: 'https://chat-web-app-4ee4c.firebaseio.com',
+  databaseURL: 'message-buddy-e9efb-default-rtdb.firebaseio.com',
 });
 
 const { sendFcm } = require('./src/fcm');
