@@ -18,7 +18,7 @@ const config = {
 };
 
 export const fcmVapidKey =
-  'BLs_I-HQyrAuUJJh8H3U0vtHGhVhXLMqoVoomeNL90GMKm0-o7sSoN9CJYRiBAVz-Yi7ZAni8mKateJfDwodTnw';
+  'BBTWtmEGQUTsQkeJ7PbJy5mEAl8EtpMYsp4Vkmjduvk5yLXexvGN-S_XhTvBqxDxgKaro8Jdd5R1zfIz4epYy-E';
 
 const app = initializeApp(config);
 export const auth = getAuth(app);
